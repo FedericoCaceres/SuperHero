@@ -6,7 +6,7 @@ import { getAllHeros } from '../controllers/super-hero/get-all-heros.js'
 const router = Router()
 
 router.get('/', (req, res) => {
-    res.json({ message: 'Hello ! This is my hero API' })
+    res.send({ message: 'Hello ! This is my hero API' })
 })
 
 router.get('/marvel', async (req, res) => {
