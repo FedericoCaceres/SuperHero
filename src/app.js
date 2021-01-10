@@ -3,7 +3,7 @@ import 'regenerator-runtime/runtime'
 import express from 'express'
 import dotenv from 'dotenv'
 import Mongo from './services/mongo'
-import router from '../src/routes/init.routes.js'
+import router from './routes/init.routes'
 
 dotenv.config()
 const port = process.env.PORT || 8000

@@ -1,7 +1,7 @@
 import { Router } from 'express'
-import { MarvelAPI } from '../controllers/marvel/collector.js'
-import { superHero } from '../controllers/super-hero/super-hero.js'
-import { getAllHeros } from '../controllers/super-hero/get-all-heros.js'
+import { MarvelAPI } from '../controllers/marvel/collector'
+import { superHero } from '../controllers/super-hero/super-hero'
+import { getAllHeros } from '../controllers/super-hero/get-all-heros'
 
 const router = Router()
 
