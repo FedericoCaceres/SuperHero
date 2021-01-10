@@ -30,7 +30,7 @@ router.use((req, res) => {
 })
 
 router.use((req, res) => {
-    res.status(500).send('Oops was an error. Sorry :(')
+    res.status(500).send('Oops! There was an error. Sorry :(')
 })
 
 export default router
