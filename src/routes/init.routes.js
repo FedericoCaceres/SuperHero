@@ -1,36 +1,31 @@
 import { Router } from 'express'
-import { MarvelAPI } from '../controllers/marvel/collector'
-import { superHero } from '../controllers/super-hero/super-hero'
-import { getAllHeros } from '../controllers/super-hero/get-all-heros'
+import { MarvelAPI } from '../services/marvel/collector'
+import { Hero } from '../controllers/super-hero/super-hero'
 
 const router = Router()
 
 router.get('/', (req, res) => {
-    res.send({ message: 'Hello ! This is my hero API' })
+  res.send({ message: 'Hello ! This is my hero API' })
 })
 
 router.get('/marvel', async (req, res) => {
-    res.json(await MarvelAPI.getAllCharacters())
+  res.json(await MarvelAPI.getAllCharacters())
 })
 
 router.get('/marvel/:id', async (req, res) => {
-    res.json(await MarvelAPI.getCharacter(req.params.id))
+  res.json(await MarvelAPI.getCharacter(req.params.id))
 })
 
-router.post('/hero', async (req, res) => {
-    res.json(await superHero(req.body))
-})
+router.post('/hero', Hero.write)
 
-router.get('/heros', async (req, res) => {
-    res.json(await getAllHeros())
+router.get('/heroes', Hero.read)
+
+router.use((req, res) => {
+  res.status(404).send('Not found. Sorry :(')
 })
 
 router.use((req, res) => {
-    res.status(404).send('Not found. Sorry :(')
-})
-
-router.use((req, res) => {
-    res.status(500).send('Oops! There was an error. Sorry :(')
+  res.status(500).send('Oops! There was an error. Sorry :(')
 })
 
 export default router
